@@ -4,8 +4,8 @@ import { InMemoryUserRepository } from './in-memory-user-repository'
 describe('In memory User Repository', () => {
   test('should return null if user is not found', async () => {
     const users: UserData[] = []
-    const userRepo = new InMemoryUserRepository(users)
-    const user = await userRepo.findUserByEmail('any@mail.com')
+    const sut = new InMemoryUserRepository(users)
+    const user = await sut.findUserByEmail('any@mail.com')
     expect(user).toBeNull()
   })
 
@@ -13,9 +13,9 @@ describe('In memory User Repository', () => {
     const users: UserData[] = []
     const name = 'any_name'
     const email = 'any@mail.com'
-    const userRepo = new InMemoryUserRepository(users)
-    await userRepo.add({ name, email })
-    const user = await userRepo.findUserByEmail(email)
+    const sut = new InMemoryUserRepository(users)
+    await sut.add({ name, email })
+    const user = await sut.findUserByEmail(email)
     expect(user.name).toBe(name)
   })
 
@@ -24,8 +24,8 @@ describe('In memory User Repository', () => {
       { name: 'any_name', email: 'any@email.com' },
       { name: 'second_name', email: 'second@email.com' }
     ]
-    const userRepo = new InMemoryUserRepository(users)
-    const returnedUsers = await userRepo.findAllUsers()
+    const sut = new InMemoryUserRepository(users)
+    const returnedUsers = await sut.findAllUsers()
     expect(returnedUsers.length).toBe(2)
   })
 })
