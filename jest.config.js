@@ -9,7 +9,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
     '!**/test/**',
-    '!**/config/**',
+    '!**/config/**'
   ],
   testEnvironment: 'node',
   transform: {
